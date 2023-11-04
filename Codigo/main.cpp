@@ -11,11 +11,11 @@ int main() {
 
     // Ejemplo de uso
     int fila = 3;
-    int columna = 2;
-    char color = 'B'; // El jugador actual es negro
+    int columna = 5;
+    char color = '*'; // El jugador actual es negro
 
-    if (tablero.esMovimientoValido(fila, columna, color)) {
-        tablero.realizarMovimiento(fila, columna, color);
+    if (tablero.esMovimientoValido(fila-1, columna-1, color)) {
+        tablero.realizarMovimiento(fila-1, columna-1, color);
         std::cout << "Movimiento valido. Tablero despues del movimiento:" << std::endl;
                                                                                  tablero.imprimirTablero();
     } else {

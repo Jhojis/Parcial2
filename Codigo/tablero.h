@@ -13,7 +13,7 @@ public:
     bool realizarMovimiento(int fila, int columna, char color);
 private:
     int tamaño;
-        std::vector<std::vector<char>> casillas; // Representación del tablero como matriz de caracteres
+        std::vector<std::vector<char>> casillas;
 
     bool fichasCapturadas(int fila, int columna, char color, int deltaFila, int deltaColumna);
 };

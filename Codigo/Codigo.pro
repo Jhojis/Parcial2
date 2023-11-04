@@ -4,14 +4,14 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        ficha.cpp \
+        Jugador.cpp \
         main.cpp \
         partida.cpp \
         reglasothello.cpp \
         tablero.cpp
 
 HEADERS += \
-    ficha.h \
+    Jugador.h \
     partida.h \
     reglasothello.h \
     tablero.h
