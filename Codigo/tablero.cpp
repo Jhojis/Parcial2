@@ -31,7 +31,7 @@ std::cout << std::endl;
 
 bool Tablero::esMovimientoValido(int fila, int columna, char color) {
 if (casillas[fila][columna] != ' ') {
-return false; // La casilla ya está ocupada, el movimiento no es válido.
+return false;
 }
 
 char oponente = (color == '-') ? '*' : '-';
@@ -71,10 +71,10 @@ return false;
 
 bool Tablero::realizarMovimiento(int fila, int columna, char color) {
 if (!esMovimientoValido(fila, columna, color)) {
-return false; // El movimiento no es válido
+return false;
 }
 
-casillas[fila][columna] = color; // Colocar la ficha en la posición elegida
+casillas[fila][columna] = color;
 
 char oponente = (color == '-') ? '*' : '-';
 

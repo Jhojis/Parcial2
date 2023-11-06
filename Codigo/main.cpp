@@ -1,26 +1,50 @@
 #include <iostream>
 #include "Tablero.h"
+#include "partida.h"
+#include "Jugador.h"
+#include <string>
+
+using namespace std;
 
 int main() {
-    Tablero tablero(8);
 
-    tablero.inicializar();
+    int menu;
+    do{
+        cout << "----- Menu inicial -----" << endl;
+        cout << "1. Iniciar nuevo juego" << endl;
+        cout << "2. Cargar datos del archivo" << endl;
+        cout << "3. Salir" << endl;
+        cin >> menu;
+    } while (menu != 1 && menu != 2 && !isdigit(menu));
 
-    std::cout << "Tablero inicial:" << std::endl;
-    tablero.imprimirTablero();
+    switch (menu) {
+    case 1: {
 
-    // Ejemplo de uso
-    int fila = 3;
-    int columna = 5;
-    char color = '*'; // El jugador actual es negro
+        string nombreJugador1;
+        string nombreJugador2;
+        char color1;
+        char color2;
+        cout << "Introduce el nombre del jugador 1: ";
+        cin >> nombreJugador1;
+        cout << "Introduce el nombre del jugador 2: ";
+        cin >> nombreJugador2;
+        cout << "Introduce el color del jugador 1: ";
+        cin >> color1;
+        cout << "Introduce el color del jugador 2: ";
+        cin >> color2;
+        Jugador jugador1(nombreJugador1, color1);
+        Jugador jugador2(nombreJugador2, color2);
 
-    if (tablero.esMovimientoValido(fila-1, columna-1, color)) {
-        tablero.realizarMovimiento(fila-1, columna-1, color);
-        std::cout << "Movimiento valido. Tablero despues del movimiento:" << std::endl;
-                                                                                 tablero.imprimirTablero();
-    } else {
-        std::cout << "Movimiento no valido." << std::endl;
+        Partida partida(jugador1, jugador2);
+
+
+        partida.jugar();
+        break;
     }
+    default:
+        break;
+    }
+
 
     return 0;
 }
