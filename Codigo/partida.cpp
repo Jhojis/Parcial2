@@ -12,8 +12,7 @@ void Partida::jugar() {
 
     tablero.inicializar();
     cout << "Tablero inicial:" << endl;
-
-    while (true) {
+    do {
         Jugador& jugadorActual = turnoJugador1 ? jugador1 : jugador2;
         char colorActual = jugadorActual.getColor();
         int fila;
@@ -33,6 +32,17 @@ void Partida::jugar() {
         }
 
         turnoJugador1 = !turnoJugador1;
+    }while (juegoTerminado() == Status::JUEGO);
+}
+
+Status Partida::juegoTerminado() {
+    if (tablero.tableroLleno()) {
+        return Status::FINALIZADO;
     }
+    if (!tablero.jugadorPuedeMover(jugador1.getColor()) && !tablero.jugadorPuedeMover(jugador2.getColor())) {
+        return Status::FINALIZADO;
+    }
+
+    return Status::JUEGO;
 }
 

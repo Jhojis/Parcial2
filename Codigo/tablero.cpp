@@ -119,3 +119,26 @@ return true;
 bool Tablero::fichasCapturadas(int fila, int columna, char color, int deltaFila, int deltaColumna) {
     return false;
 }
+bool Tablero::tableroLleno() const {
+    for (int fila = 0; fila < tamaño; fila++) {
+        for (int columna = 0; columna < tamaño; columna++) {
+            if (casillas[fila][columna] == ' ') {
+                return false;
+            }
+        }
+    }
+return true;
+}
+
+bool Tablero::jugadorPuedeMover(char color) {
+    for (int fila = 0; fila < tamaño; fila++) {
+        for (int columna = 0; columna < tamaño; columna++) {
+            if (esMovimientoValido(fila, columna, color)) {
+                return true;
+            }
+        }
+    }
+return false;
+}
+
+

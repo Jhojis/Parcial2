@@ -11,6 +11,8 @@ public:
     void imprimirTablero();
     bool esMovimientoValido(int fila, int columna, char color);
     bool realizarMovimiento(int fila, int columna, char color);
+    bool tableroLleno() const;
+    bool jugadorPuedeMover(char color);
 private:
     int tamaño;
         std::vector<std::vector<char>> casillas;
