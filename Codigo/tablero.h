@@ -18,6 +18,10 @@ private:
         std::vector<std::vector<char>> casillas;
 
     bool fichasCapturadas(int fila, int columna, char color, int deltaFila, int deltaColumna);
+    Board(int row);
+protected:
+    char** boardMatrix;
+    int rowBoard;
 };
 
 #endif

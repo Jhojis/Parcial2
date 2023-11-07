@@ -115,7 +115,9 @@ compiler_clean:
 release/Jugador.o: ../Codigo/Jugador.cpp ../Codigo/Jugador.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\Jugador.o ..\Codigo\Jugador.cpp
 
-release/main.o: ../Codigo/main.cpp ../Codigo/Tablero.h
+release/main.o: ../Codigo/main.cpp ../Codigo/Tablero.h \
+		../Codigo/partida.h \
+		../Codigo/Jugador.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Codigo\main.cpp
 
 release/partida.o: ../Codigo/partida.cpp ../Codigo/Partida.h \

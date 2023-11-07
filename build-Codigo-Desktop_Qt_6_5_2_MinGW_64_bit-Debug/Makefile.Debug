@@ -115,7 +115,9 @@ compiler_clean:
 debug/Jugador.o: ../Codigo/Jugador.cpp ../Codigo/Jugador.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\Jugador.o ..\Codigo\Jugador.cpp
 
-debug/main.o: ../Codigo/main.cpp ../Codigo/Tablero.h
+debug/main.o: ../Codigo/main.cpp ../Codigo/Tablero.h \
+		../Codigo/partida.h \
+		../Codigo/Jugador.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Codigo\main.cpp
 
 debug/partida.o: ../Codigo/partida.cpp ../Codigo/Partida.h \

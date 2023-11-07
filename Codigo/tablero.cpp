@@ -1,8 +1,11 @@
 #include "Tablero.h"
+#include "Jugador.h"
 #include <iostream>
 
+using namespace std;
+
 Tablero::Tablero(int tamaño) : tamaño(tamaño) {
-    casillas.resize(tamaño, std::vector<char>(tamaño, ' '));
+    casillas.resize(tamaño, vector<char>(tamaño, ' '));
 }
 
 Tablero::~Tablero() {
@@ -30,9 +33,9 @@ std::cout << std::endl;
 }
 
 bool Tablero::esMovimientoValido(int fila, int columna, char color) {
-if (casillas[fila][columna] != ' ') {
-return false;
-}
+    if (casillas[fila][columna] != ' ') {
+        return false;
+    }
 
 char oponente = (color == '-') ? '*' : '-';
 
@@ -40,14 +43,14 @@ char oponente = (color == '-') ? '*' : '-';
 int deltas[8][2] = { {-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1} };
 
 for (int dir = 0; dir < 8; dir++) {
-int deltaFila = deltas[dir][0];
-int deltaColumna = deltas[dir][1];
-int filaActual = fila + deltaFila;
-int columnaActual = columna + deltaColumna;
+    int deltaFila = deltas[dir][0];
+    int deltaColumna = deltas[dir][1];
+    int filaActual = fila + deltaFila;
+    int columnaActual = columna + deltaColumna;
 
-bool hayFichasOponenteEncerradas = false;
+    bool hayFichasOponenteEncerradas = false;
 
-while (filaActual >= 0 && filaActual < tamaño && columnaActual >= 0 && columnaActual < tamaño) {
+    while (filaActual >= 0 && filaActual < tamaño && columnaActual >= 0 && columnaActual < tamaño) {
             if (casillas[filaActual][columnaActual] == oponente) {
                 hayFichasOponenteEncerradas = true;
             } else if (casillas[filaActual][columnaActual] == color) {
@@ -62,7 +65,7 @@ while (filaActual >= 0 && filaActual < tamaño && columnaActual >= 0 && columnaA
 
 filaActual += deltaFila;
 columnaActual += deltaColumna;
-}
+    }
 }
 
 return false;
@@ -70,9 +73,9 @@ return false;
 
 
 bool Tablero::realizarMovimiento(int fila, int columna, char color) {
-if (!esMovimientoValido(fila, columna, color)) {
-return false;
-}
+    if (!esMovimientoValido(fila, columna, color)) {
+        return false;
+       }
 
 casillas[fila][columna] = color;
 
@@ -133,12 +136,14 @@ return true;
 bool Tablero::jugadorPuedeMover(char color) {
     for (int fila = 0; fila < tamaño; fila++) {
         for (int columna = 0; columna < tamaño; columna++) {
-            if (esMovimientoValido(fila, columna, color)) {
+            if (!esMovimientoValido(fila, columna, color)) {
                 return true;
             }
         }
     }
 return false;
 }
+
+
 
 
